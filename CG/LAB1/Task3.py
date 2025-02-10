@@ -1,11 +1,19 @@
-# Парсер строк, содержащих информацию о вершинах объекта в файле типа OBJ
-def obj_v_parser(filename):
-    # Массив для хранения числовых значений
-    values = []
 
-    # Открываем и построчно читаем файл
-    with open(filename, 'r') as file:
-        lines = file.readlines()
+def obj_v_parser(filename: str) -> list:
+    """Парсер строк, содержащих информацию о вершинах объекта в файле типа OBJ"""
+    
+    values = [] # Массив для хранения числовых значений
+    lines = [] # Массив для хранения строк из файла
+
+    try:
+        # Открываем и построчно читаем файл
+        with open(filename, 'r') as file:
+            lines = file.readlines()
+
+    except FileNotFoundError:
+        print(f"Ошибка: файл {filename} не найден.")
+    except Exception as e:
+        print(f"Ошибка при обработке файла: {e}")
 
     for line in lines:
         # Разбиваем строку по пробелам на подстроки
@@ -18,5 +26,5 @@ def obj_v_parser(filename):
 
     return values
 
-v_array = obj_v_parser('model_1.obj')
+v_array = obj_v_parser('CG\LAB1\data\model_1.obj')
 print(v_array)
