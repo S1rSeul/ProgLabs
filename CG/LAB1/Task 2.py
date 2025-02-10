@@ -190,7 +190,7 @@ def create_star(draw_function: Callable[[np.ndarray, int, int, int, int, int], N
         
         draw_function(matrix, 100, 100, x_end, y_end, 255)
     
-    save_image(matrix, "star_image.png")
+    save_image(matrix, "CG\LAB1\data\star_image.png")
 
 create_star(dotted_line_v2)
 
