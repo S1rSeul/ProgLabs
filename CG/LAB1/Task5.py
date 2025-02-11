@@ -1,4 +1,4 @@
-def obj_v_f_parser(filename: str, v_array: list, f_array: list) -> None:
+def obj_v_f_parser(filename: str) -> dict:
     """Парсер строк, содержащих информацию о вершинах объекта и о ребрах объекта в файле типа OBJ"""
 
     lines = []  # Массив для хранения строк из файла
@@ -13,13 +13,16 @@ def obj_v_f_parser(filename: str, v_array: list, f_array: list) -> None:
     except Exception as e:
         print(f"Ошибка при обработке файла: {e}")
 
+    vf = dict(v = [], f = [])
+
     for line in lines:
         if line.startswith('v '):
             # Разбиваем строку по пробелам на подстроки
             parts = line.strip().split()
             # Приводим строки к вещественным числам и заносим в массив
             v_numbers = [float(parts[1]), float(parts[2]), float(parts[3])]
-            v_array.append(v_numbers)
+
+            vf['v'].append(v_numbers)
 
         if line.startswith('f '):
             parts = line.strip().split() # Разбиваем строку по пробелам на подстроки
@@ -29,11 +32,6 @@ def obj_v_f_parser(filename: str, v_array: list, f_array: list) -> None:
                 f_value = part.split('/')[0] # Делим части по '/' и выделяем только 1-ю часть
                 f_numbers.append(int(f_value)) # Приводим строку к целому числу и заносим в массив
 
-            f_array.append(f_numbers)
+            vf['f'].append(f_numbers)
 
-
-v_array = []
-f_array = []
-obj_v_f_parser('data/model_1.obj', v_array, f_array)
-print(v_array)
-print(f_array)
+    return vf
