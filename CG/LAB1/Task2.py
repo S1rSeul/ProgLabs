@@ -4,27 +4,26 @@ import math
 from typing import Callable
 
 # Интерполяция x и y между начальным и конечным значением
-def dotted_line(image: np.ndarray, x0: int, y0: int, x1: int, y1: int, count: int, color: int) -> None:
-    step = 1.0 / count
+def dotted_line(image: np.ndarray, x0: int, y0: int, x1: int, y1: int, color: int) -> None:
+    step = 1.0 / 200
     for t in np.arange(0, 1, step):
-        x = round((1.0 - t)*x0 + t*x1)
-        y = round((1.0 - t)*y0 + t*y1)
+        x = round((1.0 - t) * x0 + t * x1)
+        y = round((1.0 - t) * y0 + t * y1)
         image[y, x] = color
 
 # Фикс dotted_line с вычислением расстояния между конечной и начальной точкой
 def dotted_line_v2(image: np.ndarray, x0: int, y0: int, x1: int, y1: int, color: int) -> None:
-    count = math.sqrt((x0 - x1)**2 + (y0 - y1)**2)
-    step = 1.0 / count
+    step = 1.0 / math.sqrt((x0 - x1) ** 2 + (y0 - y1) ** 2)
     for t in np.arange(0, 1, step):
-        x = round((1.0 - t)*x0 + t*x1)
-        y = round((1.0 - t)*y0 + t*y1)
+        x = round((1.0 - t) * x0 + t * x1)
+        y = round((1.0 - t) * y0 + t * y1)
         image[y, x] = color
 
 # Использование цикла по x, а не по t
 def x_loop_line(image: np.ndarray, x0: int, y0: int, x1: int, y1: int, color: int) -> None:
     for x in range(x0, x1):
         t = (x - x0) / (x1 - x0)
-        y = round((1.0 - t)*y0 + t*y1)
+        y = round((1.0 - t) * y0 + t * y1)
         image[y, x] = color
 
 # Фикс#1 x_loop_line - теперь точки меньшие x0 отрисовываются правильно
@@ -35,7 +34,7 @@ def x_loop_line_fix1(image: np.ndarray, x0: int, y0: int, x1: int, y1: int, colo
 
     for x in range(x0, x1):
         t = (x - x0) / (x1 - x0)
-        y = round((1.0 - t)*y0 + t*y1)
+        y = round((1.0 - t) * y0 + t * y1)
         image[y, x] = color
 
 # Фикс#2 x_loop_line - теперь точки с большим тангенсом отрисовываются правильно
@@ -183,8 +182,8 @@ def save_image(img: np.ndarray, filename: str) -> None:
 
 def create_star(draw_function: Callable[[np.ndarray, int, int, int, int, int], None]):
     matrix = np.zeros((200, 200), dtype=np.uint8)
-    for i in range(30):
-        alpha = 2 * math.pi * i / 30
+    for i in range(13):
+        alpha = 2 * math.pi * i / 13
         x_end = round(100 + 95 * math.cos(alpha))
         y_end = round(100 + 95 * math.sin(alpha))
         
@@ -194,4 +193,3 @@ def create_star(draw_function: Callable[[np.ndarray, int, int, int, int, int], N
 
 if __name__ == "__main__":
     create_star(x_loop_line_v2_no_y_calc)
-
