@@ -108,7 +108,8 @@ def create_grad_image(H: int, W: int) -> None:
     
     save_image(img, "gi.png")
 
-create_black_image(100, 100) # Создание черного изображения
-create_white_image(100, 100) # Создание белого изображения
-create_red_image(100, 100) # Создание красного изображения
-create_grad_image(100, 100) # Создание градиентного изображения
+if __name__ == '__main__':
+    create_black_image(100, 100)
+    create_white_image(100, 100)
+    create_red_image(100, 100)
+    create_grad_image(100, 100)

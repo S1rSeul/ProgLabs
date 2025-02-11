@@ -1,6 +1,5 @@
 from Task3 import obj_v_parser
 from Task1 import save_image
-from PIL import Image
 import numpy as np
 
 def build_vertex_model(vertex_array):
@@ -14,5 +13,5 @@ def build_vertex_model(vertex_array):
 
 v_array = obj_v_parser('CG\\LAB1\\data\\model_1.obj')
 matrix1 = build_vertex_model(v_array)
-save_image(matrix1, "CG\\LAB1\\data\\figure.png")
+save_image(matrix1, "CG\\LAB1\\data\\bunny.png")
 

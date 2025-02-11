@@ -1,4 +1,3 @@
-
 def obj_v_parser(filename: str) -> list:
     """Парсер строк, содержащих информацию о вершинах объекта в файле типа OBJ"""
     
@@ -25,5 +24,3 @@ def obj_v_parser(filename: str) -> list:
             values.append(numbers)
 
     return values
-
-v_array = obj_v_parser('CG\\LAB1\\data\\model_1.obj')
