@@ -24,13 +24,14 @@ def obj_v_parser(filename):
 def build_vertex_model(vertex_array):
     matrix = np.zeros((1000, 1000), dtype = np.uint8)
     for i in range(len(vertex_array)):
-        x = round(vertex_array[i][0])
-        y = round(vertex_array[i][1])
-        matrix[y, x] = 255
+        x = vertex_array[i][0]
+        y = vertex_array[i][1]
+        matrix[round(8000 * x + 500), round(8000 * y + 130)] = 255
 
     return matrix
 
 v_array = obj_v_parser('model_1.obj')
 matrix1 = build_vertex_model(v_array)
+matrix1 = np.rot90(matrix1)
 img = Image.fromarray(matrix1, 'L')
 img.save('Test.png')
