@@ -163,14 +163,14 @@ def bresenham_line(image: np.ndarray, x0: int, y0: int, x1: int, y1: int, color:
 
     if xchange:
         for x in range(x0, x1):
-            image[x, y] = color
+            image[y, x] = color
             derr += dy
             if derr > (x1 - x0):
                 derr -= 2 * (x1 - x0)
                 y += y_update
     else:
         for x in range(x0, x1):
-            image[y, x] = color
+            image[x, y] = color
             derr += dy
             if derr > (x1 - x0):
                 derr -= 2 * (x1 - x0)
@@ -190,7 +190,8 @@ def create_star(draw_function: Callable[[np.ndarray, int, int, int, int, int], N
         
         draw_function(matrix, 100, 100, x_end, y_end, 255)
     
-    save_image(matrix, "CG\\LAB1\\data\\star_image.png")
+    save_image(matrix, "data\\star_image.png")
 
-create_star(x_loop_line_v2_no_y_calc)
+if __name__ == "__main__":
+    create_star(x_loop_line_v2_no_y_calc)
 
