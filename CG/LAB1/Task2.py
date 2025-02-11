@@ -183,14 +183,14 @@ def save_image(img: np.ndarray, filename: str) -> None:
 
 def create_star(draw_function: Callable[[np.ndarray, int, int, int, int, int], None]):
     matrix = np.zeros((200, 200), dtype=np.uint8)
-    for i in range(13):
-        alpha = 2 * math.pi * i / 13
+    for i in range(30):
+        alpha = 2 * math.pi * i / 30
         x_end = round(100 + 95 * math.cos(alpha))
         y_end = round(100 + 95 * math.sin(alpha))
         
         draw_function(matrix, 100, 100, x_end, y_end, 255)
     
-    save_image(matrix, "CG\LAB1\data\star_image.png")
+    save_image(matrix, "CG\\LAB1\\data\\star_image.png")
 
-create_star(dotted_line_v2)
+create_star(x_loop_line_v2_no_y_calc)
 
