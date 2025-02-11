@@ -26,5 +26,4 @@ def obj_v_parser(filename: str) -> list:
 
     return values
 
-v_array = obj_v_parser('CG\LAB1\data\model_1.obj')
-print(v_array)
+v_array = obj_v_parser('CG\\LAB1\\data\\model_1.obj')
