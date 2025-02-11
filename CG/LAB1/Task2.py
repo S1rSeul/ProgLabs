@@ -5,7 +5,7 @@ from typing import Callable
 
 # Интерполяция x и y между начальным и конечным значением
 def dotted_line(image: np.ndarray, x0: int, y0: int, x1: int, y1: int, color: int) -> None:
-    step = 1.0 / count
+    step = 1.0 / 200
     for t in np.arange(0, 1, step):
         x = round((1.0 - t) * x0 + t * x1)
         y = round((1.0 - t) * y0 + t * y1)
