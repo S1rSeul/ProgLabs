@@ -1,4 +1,4 @@
-from Task5 import obj_v_f_parser
+from Task5 import obj_vf_parser
 from Task2 import bresenham_line
 from Task1 import save_image
 from numpy import ndarray, zeros, uint8, rot90
@@ -24,6 +24,6 @@ def build_model(vf: dict) -> ndarray:
     return rot90(matrix)
 
 if __name__ == '__main__':
-    vf_dict = obj_v_f_parser("model.obj")
+    vf_dict = obj_vf_parser("model.obj")
     matrix = build_model(vf_dict)
     save_image(matrix, 'bunnies/poly_bunny.png')

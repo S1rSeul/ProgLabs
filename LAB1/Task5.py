@@ -1,4 +1,4 @@
-def obj_v_f_parser(filename: str) -> dict:
+def obj_vf_parser(filename: str) -> dict:
     """Парсер строк, содержащих информацию о вершинах объекта и о ребрах объекта в файле типа OBJ"""
 
     lines = []  # Массив для хранения строк из файла
