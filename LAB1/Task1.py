@@ -1,7 +1,7 @@
-import numpy as np
+from numpy import ndarray, zeros, full, uint8
 from PIL import Image
 
-def save_image(img: np.ndarray, filename: str) -> None:
+def save_image(img: ndarray, filename: str) -> None:
     """
     Сохраняет numpy-массив с изображением в файл с использованием PIL.
 
@@ -37,7 +37,7 @@ def create_black_image(H: int, W: int) -> None:
         >>> create_black_image(100, 200)  # Создает изображение 200x100 пикселей
     """
 
-    img = np.zeros((H, W), dtype=np.uint8) # Нулевая матрица размера H*W
+    img = zeros((H, W), dtype=uint8) # Нулевая матрица размера H*W
 
     save_image(img, "squares/bi.png")
 
@@ -57,7 +57,7 @@ def create_white_image(H: int, W: int) -> None:
         >>> create_black_image(100, 200)  # Создает изображение 200x100 пикселей
     """
 
-    img = np.full((H, W), 255, dtype=np.uint8) # Матрица со значениями 255 размера H*W
+    img = full((H, W), 255, dtype=uint8) # Матрица со значениями 255 размера H*W
 
     save_image(img, "squares/wi.png")
 
@@ -77,7 +77,7 @@ def create_red_image(H: int, W: int) -> None:
         >>> create_red_image(300, 400) # Создает красное изображение размером 300x400 пикселей и сохраняет его
     """
 
-    img = np.full((H, W, 3), (255, 0 , 0), dtype=np.uint8) # Матрица со значениями (255, 0, 0) размера H*W*3
+    img = full((H, W, 3), (255, 0 , 0), dtype=uint8) # Матрица со значениями (255, 0, 0) размера H*W*3
 
     save_image(img, "squares/ri.png")
 
@@ -98,7 +98,7 @@ def create_grad_image(H: int, W: int) -> None:
         >>> create_grad_image(300, 400) # Создает красное изображение размером 300x400 пикселей и сохраняет его
     """
 
-    img = np.zeros((H, W, 3), dtype=np.uint8)
+    img = zeros((H, W, 3), dtype=uint8)
 
     # Заполнение матрицы
     for y in range (H):

@@ -1,10 +1,10 @@
 from Task5 import obj_v_f_parser
 from Task2 import bresenham_line
 from Task1 import save_image
-import numpy as np
+from numpy import ndarray, zeros, uint8, rot90
 
-def build_model(vf: dict) -> np.ndarray:
-    matrix = np.zeros((1000, 1000), dtype = np.uint8)
+def build_model(vf: dict) -> ndarray:
+    matrix = zeros((1000, 1000), dtype = uint8)
     for i in range(len(vf['f'])):
         p1, p2, p3 = [vi - 1 for vi in vf['f'][i]]
 
@@ -21,7 +21,7 @@ def build_model(vf: dict) -> np.ndarray:
         bresenham_line(matrix, x2, y2, x3, y3, 255)
         bresenham_line(matrix, x3, y3, x1, y1, 255)
 
-    return np.rot90(matrix)
+    return rot90(matrix)
 
 if __name__ == '__main__':
     vf_dict = obj_v_f_parser("model.obj")
