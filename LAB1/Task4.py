@@ -11,7 +11,7 @@ def build_vertex_model(vertex_array):
 
     return np.rot90(matrix)
 
-v_array = obj_v_parser('CG\\LAB1\\data\\model_1.obj')
+v_array = obj_v_parser("model.obj")
 matrix1 = build_vertex_model(v_array)
-save_image(matrix1, "CG\\LAB1\\data\\bunny.png")
+save_image(matrix1, "bunnies/vertex_bunny.png")
 

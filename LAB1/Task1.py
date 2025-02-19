@@ -19,7 +19,7 @@ def save_image(img: np.ndarray, filename: str) -> None:
     """
 
     img_pil = Image.fromarray(img) # Генерация изображения из массива
-    img_pil.save(filename) # Сохранение изображения с указанным именем
+    img_pil.save(f"LAB1/data/{filename}") # Сохранение изображения с указанным именем
 
 # Task 1.1
 def create_black_image(H: int, W: int) -> None:
@@ -39,7 +39,7 @@ def create_black_image(H: int, W: int) -> None:
 
     img = np.zeros((H, W), dtype=np.uint8) # Нулевая матрица размера H*W
 
-    save_image(img, "bi.png")
+    save_image(img, "squares/bi.png")
 
 # Task 1.2
 def create_white_image(H: int, W: int) -> None:
@@ -59,7 +59,7 @@ def create_white_image(H: int, W: int) -> None:
 
     img = np.full((H, W), 255, dtype=np.uint8) # Матрица со значениями 255 размера H*W
 
-    save_image(img, "wi.png")
+    save_image(img, "squares/wi.png")
 
 # Task 1.3
 def create_red_image(H: int, W: int) -> None:
@@ -79,7 +79,7 @@ def create_red_image(H: int, W: int) -> None:
 
     img = np.full((H, W, 3), (255, 0 , 0), dtype=np.uint8) # Матрица со значениями (255, 0, 0) размера H*W*3
 
-    save_image(img, "ri.png")
+    save_image(img, "squares/ri.png")
 
 #Task 1.4
 def create_grad_image(H: int, W: int) -> None:
@@ -106,7 +106,7 @@ def create_grad_image(H: int, W: int) -> None:
             val = (x + y) % 256 # Расчет цвета
             img[y, x] = (val, val, val)
     
-    save_image(img, "gi.png")
+    save_image(img, "squares/gi.png")
 
 if __name__ == '__main__':
     create_black_image(100, 100)

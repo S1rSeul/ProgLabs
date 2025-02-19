@@ -24,6 +24,6 @@ def build_model(vf: dict) -> np.ndarray:
     return np.rot90(matrix)
 
 if __name__ == '__main__':
-    vf_dict = obj_v_f_parser('CG\\LAB1\\data\\model_1.obj')
+    vf_dict = obj_v_f_parser("model.obj")
     matrix = build_model(vf_dict)
-    save_image(matrix, 'CG\\LAB1\\data\\bunny.png')
+    save_image(matrix, 'bunnies/poly_bunny.png')

@@ -5,7 +5,7 @@ def obj_v_f_parser(filename: str) -> dict:
 
     try:
         # Открываем и построчно читаем файл
-        with open(filename, 'r') as file:
+        with open(f"LAB1/data/{filename}", 'r') as file:
             lines = file.readlines()
 
     except FileNotFoundError:

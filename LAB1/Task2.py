@@ -2,6 +2,7 @@ import numpy as np
 from PIL import Image
 import math
 from typing import Callable
+from Task1 import save_image
 
 # Интерполяция x и y между начальным и конечным значением
 def dotted_line(image: np.ndarray, x0: int, y0: int, x1: int, y1: int, color: int) -> None:
@@ -175,11 +176,6 @@ def bresenham_line(image: np.ndarray, x0: int, y0: int, x1: int, y1: int, color:
                 derr -= 2 * (x1 - x0)
                 y += y_update
 
-def save_image(img: np.ndarray, filename: str) -> None:
-    """Генерация и сохранение изображения"""
-    img_pil = Image.fromarray(img) # Генерация изображения из массива
-    img_pil.save(filename) # Сохранение изображения с указанным именем
-
 def create_star(draw_function: Callable[[np.ndarray, int, int, int, int, int], None]):
     matrix = np.zeros((200, 200), dtype=np.uint8)
     for i in range(13):
@@ -189,7 +185,7 @@ def create_star(draw_function: Callable[[np.ndarray, int, int, int, int, int], N
         
         draw_function(matrix, 100, 100, x_end, y_end, 255)
     
-    save_image(matrix, "data\\star_image.png")
+    save_image(matrix, "stars/star.png")
 
 if __name__ == "__main__":
     create_star(x_loop_line_v2_no_y_calc)
