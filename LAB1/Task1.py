@@ -2,24 +2,8 @@ from numpy import ndarray, zeros, full, uint8
 from PIL import Image
 
 def save_image(img: ndarray, filename: str) -> None:
-    """
-    Сохраняет numpy-массив с изображением в файл с использованием PIL.
-
-    Поддерживает все форматы, доступные в библиотеке Pillow (PNG, JPEG и др.).
-    Тип файла определяется по расширению указанного имени файла.
-
-    Args:
-        image (np.ndarray): Изображение в виде numpy-массива. Ожидается
-            двумерный массив (grayscale) или трехмерный (RGB/RGBA) с dtype=np.uint8.
-        file_name (str): Имя целевого файла, включая расширение.
-
-    Example:
-        >>> img = np.zeros((100, 100), dtype=np.uint8)
-        >>> save_image(img, "example.png")
-    """
-
     img_pil = Image.fromarray(img) # Генерация изображения из массива
-    img_pil.save(f"LAB1/data/{filename}") # Сохранение изображения с указанным именем
+    img_pil.save(filename) # Сохранение изображения с указанным именем
 
 # Task 1.1
 def create_black_image(H: int, W: int) -> None:
