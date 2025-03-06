@@ -1,7 +1,7 @@
 import numpy as np
 from LAB1.Task1 import save_image
 from LAB1.Task5 import obj_vf_parser
-from LAB2.task1 import draw_tr
+from LAB2.Task1 import draw_tr
 
 def build_model(vf):
     matrix = np.full((1000, 1000, 3), (0, 0, 0), dtype=np.uint8)
@@ -22,6 +22,6 @@ def build_model(vf):
     return matrix
 
 if __name__ == '__main__':
-    vf_dict = obj_vf_parser("model_1.obj")
+    vf_dict = obj_vf_parser("data/model.obj")
     matrix = build_model(vf_dict)
     save_image(matrix, 'bunny.png')
